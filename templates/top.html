@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--------------------
+  Webブラウザ上に情報入力する画面を出力する
+------------------------>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax
+          /libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script src="/static/main.js"></script>
+    <script src="/static/getter.js"></script>
+    <script src="/static/setter.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/top-pc-layout.css">
+    {% if title %}
+      <title>{{ title }}</title>
+    {% else %}
+      <title>Bootstrap 101 Template</title>
+    {% endif %}
+
+
+  </head>
+  <body>
+    {% if error_msg %}
+      <h3>{{ error_msg }}</h3>
+    {% endif %}
+    <div class="main">
+      <form method="post" action="/map">
+        <span><input onClick="setKeyNumberTextbox('')" 
+            type="text" name="key-number" maxlength="3" 
+            class="input-box" value="部屋番号"></span>
+        <br>
+        <span id="password-box"><input type="text" 
+          onfocus="setKeyPasswordTextbox('')" name="key-password" 
+          maxlength="30" class="input-box" value="パスワード"></span>
+        <br>
+      
+      <button id="top-search-button" >検索</button>
+
+      </form>
+    </div>
+  </body>
+</html>

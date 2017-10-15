@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/jquery.mobile-1.4.5.min.css" />
+    <script src="/static/jquery-2.1.4.min.js"></script>
+    <script src="/static/jquery.mobile-1.4.5.min.js"></script>
+
+
+    <script src="/static/main.js"></script>
+    <script src="/static/getter.js"></script>
+    <script src="/static/setter.js"></script>
+    <script src="/static/top-sp-script.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/top-sp-layout.css">
+
+    {% if title %}
+      <title>{{ title }}</title>
+    {% else %}
+      <title>Bootstrap 101 Template</title>
+    {% endif %}
+
+  </head>
+    <body>
+
+  <!--------------------
+  スマホのWebブラウザ上に情報入力する画面を出力する
+  ------------------------>
+   <div id="top" data-role="page">
+
+     <div role="main" class="ui-content">
+        {% if error_msg %}
+          <h3>{{ error_msg }}</h3>
+        {% endif %}
+        <span><input onClick="setKeyNumberTextbox('')" 
+          type="text" name="key-number" maxlength="3" 
+          class="input-box" value="部屋番号"></span>
+        <br>
+        <span id="password-box"><input type="text" 
+          onfocus="setKeyPasswordTextboxMobile('')" 
+          name="key-password" maxlength="30" class="input-box" 
+          value="パスワード"></span>
+        <br>
+        <button id="top-search-button" 
+        onclick="searchRequestMobile()">位置検索</button>
+
+     </div>
+
+    </div>
+
+    <!--------------------
+    スマホのWebブラウザ上にマップ画面を出力する
+    ------------------------>
+    <div id="map" data-role="page">
+       <div data-role="header">
+        <h1>
+          <a href="#top" class="ui-btn ui-btn-left">もどる</a>
+          <span id="response_txt" style="display:none">{{response_msg}}</span>
+        </h1>
+       </div>
+       <b><span id="roomtext">
+        </span>号室の鍵の最新の位置(<span id="timetext"></span>)</b>
+       <div role="main" class="ui-content">
+          <canvas id="canvas_id" width="1000" height="500"></canvas>
+       </div>
+
+       <div data-role="footer">
+       </div>
+    </div>
+
+  </body>
+</html>

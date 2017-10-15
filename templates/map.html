@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--------------------
+  Webブラウザ上にマップ画面を出力する
+------------------------>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com
+      /ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+      //window.onload= function(){
+      //  searchRequest(getResponseText());
+      //}
+      setTimeout(searchRequest(getResponseText()),100)
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="/static/top-pc-layout.css">
+    {% if title %}
+      <title>{{ title }}</title>
+    {% else %}
+      <title>Bootstrap 101 Template</title>
+    {% endif %}
+
+  </head>
+  <body>
+    <h1>{{room_num}}号室の鍵の最新の位置(<span id="timetext"></span>)</h1>
+    <span id="response_txt" style="display:none">{{response_msg}}</span>
+
+    <h4>
+      <form method="post" action="/map">
+        <input type="text" name="key-number" 
+        maxlength="3" value="{{room_num}}" 
+        style="display:none">
+        password:<input type="password" name="key-password" maxlength="30">
+        <button >位置再検索</button>
+      </form>
+    </h4>
+
+    <canvas id="canvas_id" width="1000" height="1000"></canvas>
+  </body>
+</html>

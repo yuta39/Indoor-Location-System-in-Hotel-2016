@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/jquery-2.1.4.min.js"></script>
+    <script src="/static/jquery.mobile-1.4.5.min.js"></script>
+    <script src="/static/main.js"></script>
+    <script src="/static/getter.js"></script>
+    <script src="/static/setter.js"></script>
+    <script src="/static/top-sp-script.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/top-sp-layout.css">
+
+    {% if title %}
+      <title>{{ title }}</title>
+    {% else %}
+      <title>Bootstrap 101 Template</title>
+    {% endif %}
+
+  </head>
+  <body>
+    <div id="map" data-role="page">
+       <div data-role="header">
+        <h1>
+          <a href="#top" class="ui-btn ui-icon-arrowrefresh-1-s ui-btn-icon-left ui-btn-left">もどる</a>
+          {{room_num}}号室の鍵の最新の位置(<span id="timetext"></span>)
+       </div>
+       </h1>
+       <span id="response_txt" style="display:none">{{response_msg}}</span>
+
+       <div role="main" class="ui-content">
+          <canvas id="canvas_id" width="1000" height="500"></canvas>
+       </div>
+
+       <div data-role="footer">
+       </div>
+    </div>
+
+  </body>
+</html>
